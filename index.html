@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alexej Zhukov Portfolio</title>
+  <meta name="description" content="Alexej Zhukov, games engineer from Cambridge. Unity and Unreal Engine projects, MSc Games Engineering from the University of Warwick.">
+  <meta name="theme-color" content="#0b0d13">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alexej Zhukov, Games Engineer">
+  <meta property="og:description" content="My Unity and Unreal Engine projects, from my first game at sixth form to my MSc dissertation at the University of Warwick.">
+  <meta property="og:url" content="https://alexejzhukov.com/">
+  <meta property="og:image" content="https://alexejzhukov.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Chakra+Petch:wght@600;700&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#levels">Skip to projects</a>
+
+  <!-- Boot screen: short, skippable, skipped for reduced motion and repeat visits -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__inner">
+      <p class="pixel">Loading level 1-1</p>
+      <div class="boot__bar"><span id="boot-fill"></span></div>
+      <p class="pixel boot__tip">Tip: click the sky to fire</p>
+    </div>
+  </div>
+
+  <div class="xp" aria-hidden="true"><span id="xp-fill"></span></div>
+
+  <header class="hud" id="hud">
+    <a class="hud__logo" href="#top" aria-label="Back to the top">
+      <img src="assets/logo.webp" alt="" width="328" height="296">
+    </a>
+    <nav class="hud__nav" id="nav" aria-label="Sections">
+      <a href="#levels" data-spy="levels">Projects</a>
+      <a href="#character" data-spy="character">About</a>
+      <a href="#loadout" data-spy="loadout">Skills</a>
+      <a href="#side-quests" data-spy="side-quests">Other work</a>
+      <a href="#contact" data-spy="contact" class="hud__cta">Contact</a>
+    </nav>
+    <button class="hud__menu" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+  </header>
+
+  <main id="top">
+    <section class="title" id="title" aria-label="Introduction">
+      <canvas class="title__canvas" id="tank-canvas" aria-hidden="true"></canvas>
+
+      <div class="title__grid">
+        <div class="title__copy">
+          <h1 class="title__name" id="name">
+            <span class="title__line">Alexej</span>
+            <span class="title__line title__line--alt">Zhukov</span>
+          </h1>
+          <p class="title__lede">I&#8217;m a games engineer from Cambridge. I build games in Unity and Unreal Engine, and my master&#8217;s project at Warwick was a UE5 simulation of AI NPCs trying to survive an apocalypse.</p>
+
+          <ul class="menu" id="main-menu" aria-label="Main menu">
+            <li><a href="#levels" class="menu__item"><span class="menu__cursor" aria-hidden="true">&#9654;</span><span class="menu__label">Start</span><span class="menu__hint">See my projects</span></a></li>
+            <li><a href="#character" class="menu__item"><span class="menu__cursor" aria-hidden="true">&#9654;</span><span class="menu__label">Character</span><span class="menu__hint">About me</span></a></li>
+            <li><a href="#loadout" class="menu__item"><span class="menu__cursor" aria-hidden="true">&#9654;</span><span class="menu__label">Loadout</span><span class="menu__hint">Skills and tools</span></a></li>
+            <li><a href="#contact" class="menu__item"><span class="menu__cursor" aria-hidden="true">&#9654;</span><span class="menu__label">Continue</span><span class="menu__hint">Get in touch</span></a></li>
+          </ul>
+          <p class="pixel title__keys" aria-hidden="true">&#8593;&#8595; select &nbsp; Enter confirm &nbsp; Click sky to fire</p>
+        </div>
+
+        <aside class="card-char panel" aria-label="Character card">
+          <p class="pixel card-char__tag">Character select</p>
+          <div class="card-char__photo">
+            <img src="assets/headshot.webp" alt="Portrait of Alexej Zhukov" width="480" height="640">
+          </div>
+          <div class="card-char__row">
+            <p class="card-char__name">Alexej</p>
+            <p class="pixel card-char__lvl">Lvl 24</p>
+          </div>
+          <p class="card-char__class">Games engineer from Cambridge, UK</p>
+          <dl class="stats">
+            <div class="stat" style="--v:1"><dt>Unity and C#</dt><dd>5 yrs</dd></div>
+            <div class="stat" style="--v:.6"><dt>C++</dt><dd>3 yrs</dd></div>
+            <div class="stat" style="--v:.4"><dt>Unreal Engine</dt><dd>2 yrs</dd></div>
+            <div class="stat" style="--v:1"><dt>Adobe apps</dt><dd>5 yrs</dd></div>
+          </dl>
+        </aside>
+      </div>
+
+      <div class="title__hud pixel" aria-hidden="true">
+        <span id="score" class="title__score">Score 000000</span>
+      </div>
+      <a class="title__down pixel" href="#levels">Press start &#9660;</a>
+    </section>
+
+    <section class="section" id="levels" aria-labelledby="levels-h">
+      <header class="section__head reveal">
+        <h2 id="levels-h">Level select</h2>
+        <p class="section__intro">Every game I&#8217;ve made, from my first one at sixth form college to my master&#8217;s dissertation. Pick a level to see it in action.</p>
+      </header>
+
+      <div class="track reveal">
+        <div class="track__scroll" id="track-scroll">
+          <div class="track__inner" id="track-inner" role="group" aria-label="Choose a level">
+            <svg class="track__tank" id="track-tank" viewBox="0 0 44 26" width="44" height="26" aria-hidden="true">
+              <g class="tank-g">
+              <rect x="20" y="6" width="20" height="4" fill="#2a3247"/><rect x="37" y="5" width="5" height="6" fill="#4db2ff"/>
+              <path d="M12 12 a10 10 0 0 1 20 0 z" fill="#232a3c" stroke="#4db2ff" stroke-width="2"/>
+              <path d="M6 12 h32 l4 6 h-40 z" fill="#1b2131" stroke="#4db2ff" stroke-width="2"/>
+              <rect x="3" y="18" width="38" height="7" rx="3.5" fill="#10131c" stroke="rgba(238,240,246,.4)"/>
+              <circle cx="10" cy="21.5" r="2" fill="#9097ab"/><circle cx="18" cy="21.5" r="2" fill="#9097ab"/><circle cx="26" cy="21.5" r="2" fill="#9097ab"/><circle cx="34" cy="21.5" r="2" fill="#9097ab"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <p class="pixel track__hint" aria-hidden="true">Swipe for more levels &#9654;</p>
+      </div>
+
+      <article class="stage panel reveal" id="stage" aria-live="polite">
+        <div class="stage__media" id="stage-media">
+          <img id="stage-img" src="assets/npc-simulation.webp" alt="" width="576" height="324">
+          <span class="pixel stage__badge" id="stage-badge"></span>
+          <span class="pixel stage__engine" id="stage-engine"></span>
+          <a class="stage__play pixel" id="stage-play" href="#" target="_blank" rel="noopener">&#9654; Play video</a>
+        </div>
+        <div class="stage__info" id="stage-info">
+          <p class="pixel stage__world" id="stage-world"></p>
+          <h3 class="stage__title" id="stage-title"></h3>
+          <p class="stage__ctx" id="stage-ctx"></p>
+          <p class="stage__body" id="stage-body"></p>
+          <ul class="chips" id="stage-tags"></ul>
+          <div class="stage__actions" id="stage-actions"></div>
+          <div class="stage__nav">
+            <button class="btn btn--small" id="stage-prev" type="button">&#9664; Prev</button>
+            <span class="pixel stage__count" id="stage-count"></span>
+            <button class="btn btn--small" id="stage-next" type="button">Next &#9654;</button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="character" aria-labelledby="char-h">
+      <header class="section__head reveal">
+        <h2 id="char-h">Backstory</h2>
+      </header>
+      <div class="char">
+        <div class="char__bio reveal">
+          <p>I was born in Drogheda in Ireland, but I&#8217;ve lived in Cambridge for pretty much my whole life. I got into making things through video editing, effects and animation in Adobe software, and spent a lot of time messing around with cameras and computers. Over time that turned into programming, and then into making games.</p>
+          <p>My undergrad dissertation was a remake of a classic arcade game in Unity with a few twists of my own. For my master&#8217;s I went bigger and simulated AI NPCs reacting to an apocalyptic event in Unreal Engine 5.</p>
+          <div class="panel panel--note">
+            <h3 class="panel__h">Team play</h3>
+            <p>My favourite team experience so far was a 48 hour game jam. I led a team of three and we shipped Ha-Ha Haunters, a silly survival game where you fight off ghosts using animals as weapons, each with their own sounds and abilities.</p>
+          </div>
+        </div>
+
+        <ol class="path reveal" aria-label="Education, most recent first">
+          <li class="path__stage">
+            <p class="path__lvl"><span class="pixel">Stage 4</span> 2024 to 2025</p>
+            <h3>MSc Games Engineering</h3>
+            <p class="path__where">University of Warwick, graduated with <strong>Merit</strong></p>
+            <details>
+              <summary>Modules</summary>
+              <ul class="chips">
+                <li>Games Engine Design and Development</li><li>Advanced Computer Graphics</li><li>Computer Graphics</li><li>Machine Intelligence and Data Science</li><li>Programming and Fundamental Algorithms</li><li>Games Engineering</li><li>Games Research, Development and Management</li><li>MSc Project</li>
+              </ul>
+            </details>
+          </li>
+          <li class="path__stage">
+            <p class="path__lvl"><span class="pixel">Stage 3</span> 2021 to 2024</p>
+            <h3>BSc (Hons) Computer Games</h3>
+            <p class="path__where">University of Essex, graduated with <strong>Upper second-class honours</strong></p>
+            <details>
+              <summary>Modules</summary>
+              <ul class="chips">
+                <li>C++ Programming</li><li>Data Structures and Algorithms</li><li>Introduction to AI</li><li>Computer Game Design</li><li>Computer Game Programming</li><li>High-Level Games Development</li><li>Virtual Worlds</li><li>Computer Vision</li><li>Advanced Programming</li><li>Information Retrieval</li><li>Application Programming</li><li>Operating Systems</li><li>Object-Oriented Programming</li><li>Mathematics for Computing</li><li>Web Development</li><li>Databases</li><li>Network Fundamentals</li><li>Digital Systems</li><li>Team Project Challenge</li><li>Individual Capstone Project</li>
+              </ul>
+            </details>
+          </li>
+          <li class="path__stage">
+            <p class="path__lvl"><span class="pixel">Stage 2</span> 2018 to 2021</p>
+            <h3>Sixth form</h3>
+            <p class="path__where">Long Road Sixth Form College, Media Level 2 <strong>Distinction</strong> and Level 3 <strong>Distinction*</strong></p>
+          </li>
+          <li class="path__stage">
+            <p class="path__lvl"><span class="pixel">Stage 1</span> 2014 to 2018</p>
+            <h3>Secondary school</h3>
+            <p class="path__where">Coleridge Community College, <strong>A* to C GCSEs</strong> including English and Maths</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="loadout" aria-labelledby="loadout-h">
+      <header class="section__head reveal">
+        <h2 id="loadout-h">Loadout</h2>
+        <p class="section__intro">Roughly how long I&#8217;ve been using each tool. A full bar means five years or more.</p>
+      </header>
+      <div class="loadout">
+        <div class="slot panel reveal">
+          <h3 class="panel__h">Engines and code</h3>
+          <ul class="inv">
+            <li style="--v:1"><span>Unity / C#</span><em>5 yrs</em></li>
+            <li style="--v:.6"><span>C++</span><em>3 yrs</em></li>
+            <li style="--v:.6"><span>Java</span><em>3 yrs</em></li>
+            <li style="--v:.4"><span>Python / TensorFlow</span><em>2 yrs</em></li>
+            <li style="--v:.25"><span>Unreal Engine 4</span><em>1+ yr</em></li>
+            <li style="--v:.15"><span>Unreal Engine 5</span><em>&lt;1 yr</em></li>
+            <li style="--v:.15"><span>DirectX 11</span><em>&lt;1 yr</em></li>
+          </ul>
+        </div>
+        <div class="slot panel reveal">
+          <h3 class="panel__h">Art, video and 3D</h3>
+          <ul class="inv">
+            <li style="--v:1"><span>Photoshop</span><em>5 yrs</em></li>
+            <li style="--v:1"><span>Premiere Pro</span><em>5 yrs</em></li>
+            <li style="--v:.8"><span>After Effects</span><em>4 yrs</em></li>
+            <li style="--v:.6"><span>Blender</span><em>3 yrs</em></li>
+            <li style="--v:.2"><span>Illustrator</span><em>1 yr</em></li>
+            <li style="--v:.15"><span>Maya</span><em>&lt;1 yr</em></li>
+            <li style="--v:.15"><span>Animate</span><em>&lt;1 yr</em></li>
+          </ul>
+        </div>
+        <div class="slot panel reveal">
+          <h3 class="panel__h">Tools and teamwork</h3>
+          <ul class="inv">
+            <li style="--v:.6"><span>IntelliJ IDEA</span><em>3 yrs</em></li>
+            <li style="--v:.2"><span>GitHub</span><em>1 yr</em></li>
+            <li class="inv__plain"><span>Visual Studio</span></li>
+          </ul>
+          <p class="slot__note">On team projects I use GitHub issues, project boards and branches to keep everyone&#8217;s work organised.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="side-quests" aria-labelledby="side-h">
+      <header class="section__head reveal">
+        <h2 id="side-h">Side quests</h2>
+        <p class="section__intro">Before I got into games I was mostly editing videos. Here are some of my favourites. They all open on YouTube.</p>
+      </header>
+      <div class="quests" id="quests-grid"></div>
+      <div class="artwork reveal">
+        <h3 class="panel__h">Design and illustration</h3>
+        <ul class="chips chips--art" id="art-list"></ul>
+      </div>
+    </section>
+
+    <section class="section continue" id="contact" aria-labelledby="contact-h">
+      <div class="continue__inner reveal">
+        <h2 id="contact-h" class="continue__h">Continue? <span class="continue__count" id="countdown" aria-hidden="true">9</span></h2>
+        <p class="continue__text">I&#8217;m looking for graduate and junior roles in game development and software engineering. If you think I could be a good fit for your team, send me an email and I&#8217;ll get back to you as soon as I can.</p>
+        <div class="continue__mail panel">
+          <p class="continue__addr" id="email-text">Alexejz4321@gmail.com</p>
+          <div class="continue__actions">
+            <a class="btn btn--primary" id="email-link" href="mailto:Alexejz4321@gmail.com">Send an email</a>
+            <button class="btn" id="copy-btn" type="button">Copy address</button>
+          </div>
+          <p class="continue__status" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>&#169; 2026 Alexej Zhukov</p>
+    <p class="pixel foot__cheat" title="Try it">&#8593;&#8593;&#8595;&#8595;&#8592;&#8594;&#8592;&#8594; A Z</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <p class="pixel toast__k">Achievement unlocked</p>
+    <p class="toast__t" id="toast-text"></p>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/tank.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
